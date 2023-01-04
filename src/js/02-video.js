@@ -6,8 +6,11 @@ const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
 
 player.on('timeupdate', throttle(trackTime, 1000));
-function trackTime(e) {
-  localStorage.setItem( "videoplayer-current-time", JSON.stringify(e.seconds));
+function trackTime(timeupdate) {
+  localStorage.setItem(
+    'videoplayer-current-time',
+    JSON.stringify(timeupdate.seconds)
+  );
 }
 
 
