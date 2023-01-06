@@ -2,7 +2,8 @@ import throttle from 'lodash.throttle';
 const form = document.querySelector(`form`);
 const input = document.querySelector(`input`);
 const textarea = document.querySelector(`textarea`);
-form.addEventListener(`input`, createDataKey);
+form.addEventListener(`input`, throttle(createDataKey, 500));
+// После добавления задержки в консоле ошибки если быстро ввожу, слушатель возращает ответ а канал закрыт, посмотрите пожалуйста
 function createDataKey(evt) {
   const {
     elements: { email, message },
